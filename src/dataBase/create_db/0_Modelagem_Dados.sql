@@ -86,6 +86,8 @@ ALTER DATABASE DB CHARACTER SET UTF8 COLLATE UTF8_UNICODE_CI;
 /*
 CADASTRO DE SETORES: ZONA NORTE, ZONA LESTE, ZONA SUL, ZONA OESTE
 */
+
+--// Lidia
 DROP TABLE IF EXISTS SETOR;  
 CREATE TABLE SETOR (ID_Setor             INTEGER      AUTO_INCREMENT PRIMARY KEY   
                    ,NM_Setor             VARCHAR(30)  NOT NULL);
@@ -94,6 +96,7 @@ CREATE TABLE SETOR (ID_Setor             INTEGER      AUTO_INCREMENT PRIMARY KEY
 /*
 CADASTRO DOS BAIRROS
 */
+--//Jennifer
 DROP TABLE IF EXISTS BAIRRO;
 CREATE TABLE BAIRRO (ID_Bairro          INTEGER         AUTO_INCREMENT PRIMARY KEY
                     ,NM_Bairro          VARCHAR(100)    NOT NULL
@@ -105,6 +108,7 @@ CREATE TABLE BAIRRO (ID_Bairro          INTEGER         AUTO_INCREMENT PRIMARY K
 /*
 CADASTRO DE LOCALIDADE (Cidade)
 */
+--// Prates
 DROP TABLE IF EXISTS LOCALIDADE;
 CREATE TABLE LOCALIDADE (ID_Localidade    INTEGER     AUTO_INCREMENT PRIMARY KEY
                         ,NM_Localidade    VARCHAR(50) NOT NULL
@@ -151,7 +155,7 @@ CADASTRO DE FUNÇÃO:
 - Cargo é a posição que uma pessoa ocupa em uma organização 
 - Função é o conjunto de atividades e responsabilidades associadas a essa posição. 
 */
-
+--// Takeo
 DROP TABLE IF EXISTS FUNCAO; 
 CREATE TABLE FUNCAO (ID_Funcao      INTEGER         AUTO_INCREMENT PRIMARY KEY
                     ,NM_Funcao      VARCHAR(40)     NOT NULL);
@@ -230,8 +234,9 @@ CREATE TABLE VISTORIA (ID_Vistoria      INTEGER      AUTO_INCREMENT PRIMARY KEY
 /*
 Itens que por padrão devem ser vistoriados. Deve haver documentação sobre este processo.
 */
-Vistoria_Item (ID_Vistoria_Item
-              ,ID_Vistoria
+Vistoria_Item (ID_Vistoria_Item         INTEGER      AUTO_INCREMENT PRIMARY KEY
+              ,ID_Vistoria              INTEGER      NOT NULL
+              , 
               ,)
 
 CREATE TABLE OCORRENCIA (ID_Ocorrencia        INTEGER         AUTO_INCREMENT PRIMARY KEY
