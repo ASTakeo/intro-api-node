@@ -4,6 +4,6 @@ const router = express.Router();
 // const UsuarioControler = require('../controllers/vistoria');
 const ParametroControler = require('../controllers/parametro');
 
-router.get('/Parametro', ParametroControler.listarParametro);
+router.get('/parametro', ParametroControler.listarParametro);
 
 module.exports = router;
