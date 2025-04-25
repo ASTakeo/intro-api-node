@@ -36,22 +36,88 @@ module.exports ={
             const values = [nm_tipo_rua];
 
             // Executa o SQL
-            const confirmacao = await db.query(sql, values);
+            const [result] = await db.query(sql, values);
 
             // Recupera o ID gerado
-            const ID_Table = confirmacao[0].insertId;
+            const ID_Table = result.insertId;
 
             // Lista dos Dados Inseridos
             const dados = {
-                id_tipo_rua,
+                id_tipo_rua: ID_Table,
                 nm_tipo_rua
             }
                 
             return response.status(200).json({
                 sucesso: true,
                 mensagem: 'Tipos de Rua Cadastro com Sucesso!',
-                itens: rows.length,
-                dados: rows
+                dados: dados
+        });
+
+        }catch (error) {
+            return response.status(500).json({
+                sucesso: false,
+                mensagem: 'Erro na requisição.',
+                dados: error.mensage
+            });
+        }
+    },
+
+    async atualizarTipoRua(request, response){
+        try {
+            // Os campos que serão utilizados no Insominia
+            const {nm_tipo_rua} = request.body;
+
+            // Parametro recebido pela URL
+            const {id_tipo_rua} = request.params;
+
+            // Instrução SQl
+            const sql = `UPDATE TIPO_RUA 
+                         SET NM_Tipo_Rua = ?
+                         WHERE ID_Tipo_Rua = ?;`;
+
+            // Definição do valores do parâmetro
+            const values = [nm_tipo_rua,id_tipo_rua];
+
+            // Executa o SQL
+            const atualizaDados = await db.query(sql, values);
+
+            return response.status(200).json({
+                sucesso: true,
+                mensagem: `Tipos de Rua ${id_tipo_rua} atualizado com sucesso!`,
+                dados: atualizaDados[0].affectedRows
+        });
+
+        }catch (error) {
+            return response.status(500).json({
+                sucesso: false,
+                mensagem: 'Erro na requisição.',
+                dados: error.mensage
+            });
+        }
+    },
+
+    async excluirTipoRua(request, response){
+        try {
+            // Os campos que serão utilizados no Insominia
+            // const {nm_tipo_rua} = request.body;
+
+            // Parametro recebido pela URL
+            const {id_tipo_rua} = request.params;
+
+            // Instrução SQl
+            const sql = `DELETE FROM TIPO_RUA 
+                         WHERE ID_Tipo_Rua = ?;`;
+
+            // Definição do valores do parâmetro
+            const values = [id_tipo_rua];
+
+            // Executa o SQL
+            const excluir = await db.query(sql, values);
+
+            return response.status(200).json({
+                sucesso: true,
+                mensagem: `Tipos de Rua ${id_tipo_rua} excluído com sucesso!`,
+                dados: excluir[0].affectedRows
         });
 
         }catch (error) {
