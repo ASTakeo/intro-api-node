@@ -163,7 +163,6 @@ INSERT INTO LOCALIDADE (ID_Localidade,NM_Localidade,UF_Localidade) VALUES (1,'TU
 -- //----------------------------------------------------------------------------------------------------------------------------------------------
 -- //----------------------------------------------------------------------------------------------------------------------------------------------
 
-
 INSERT INTO TIPO_RUA (ID_Tipo_Rua,NM_Tipo_Rua) VALUES (1,'ALAMEDA');
 INSERT INTO TIPO_RUA (ID_Tipo_Rua,NM_Tipo_Rua) VALUES (2,'AREA');
 INSERT INTO TIPO_RUA (ID_Tipo_Rua,NM_Tipo_Rua) VALUES (3,'AVENIDA');
@@ -184,8 +183,6 @@ INSERT INTO TIPO_RUA (ID_Tipo_Rua,NM_Tipo_Rua) VALUES (15,'VIADUTO');
 -- //----------------------------------------------------------------------------------------------------------------------------------------------
 -- //----------------------------------------------------------------------------------------------------------------------------------------------
 -- //----------------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 INSERT INTO RUA (ID_Tipo_Rua,NM_Rua,CEP,Numeracao,ID_Bairro,ID_Localidade) VALUES (1,'ABEL FERREIRA LEITE','17600700','ATE 350/351',1,1);
 INSERT INTO RUA (ID_Tipo_Rua,NM_Rua,CEP,Numeracao,ID_Bairro,ID_Localidade) VALUES (1,'ABEL FERREIRA LEITE','17603050','DE 352/353 AO FIM',1,1);
@@ -1154,39 +1151,39 @@ INSERT INTO RUA (ID_Tipo_Rua,NM_Rua,CEP,Numeracao,ID_Bairro,ID_Localidade) VALUE
 
 -- // CARGO
 
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (1,'AGENTE DE VISTORIA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (2,'GUARDA MUNICIPAL');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (3,'AUXILIAR DE ENFERMAGEM');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (4,'AUXILIAR DE FARMACIA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (5,'AUXILIAR ODONTOLOGICO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (6,'RECEPCIONISTA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (7,'AGENTE DE SAUDE');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (8,'MOTORISTA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (9,'AGENTE AMBIENTAL');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (10,'AUXILIAR ADMINISTRATIVO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (11,'FATURISTA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (12,'FISCAL DE VIGILANCIA EPIDEMIOLOGICA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (13,'FISCAL DE VIGILANCIA SANITARIA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (14,'TECNICO DE ENFERMAGEM');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (15,'AGENTE ADMINISTRATIVO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (16,'ASSISTENTE SOCIAL');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (17,'BIOQUIMICO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (18,'ENFERMEIRO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (19,'FARMACEUTICO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (20,'FISIOTERAPEUTA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (21,'NUTRICIONISTA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (22,'CIRURGIAO DENTISTA');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (23,'ADMINISTRADOR HOSPITALAR');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (24,'SECRETARIO DE SAUDE');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (25,'CHEFE DO DEPARTAMENTO DE APOIO A SAUDE');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (26,'COORDENADOR DE PROGRAMAS DA SAUDE'); 
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (27,'AUXILIAR ODONTOLOGICO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (28,'AUXILIAR TECNICO DE ENFERMAGEM');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (29,'ENFERMEIRO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (30,'MEDICO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (31,'ESTAGIARIO');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (32,'AGENTE COMUNITARIO DE SAUDE');
-INSERT INTO FUNCAO (ID_Funcao,NM_Funcao) VALUES (33,'AUXILIAR DE SERVICOS GERAIS');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (1,'AGENTE DE VISTORIA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (2,'GUARDA MUNICIPAL','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (3,'AUXILIAR DE ENFERMAGEM','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (4,'AUXILIAR DE FARMACIA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (5,'AUXILIAR ODONTOLOGICO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (6,'RECEPCIONISTA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (7,'AGENTE DE SAUDE','S');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (8,'MOTORISTA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (9,'AGENTE AMBIENTAL','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (10,'AUXILIAR ADMINISTRATIVO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (11,'FATURISTA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (12,'FISCAL DE VIGILANCIA EPIDEMIOLOGICA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (13,'FISCAL DE VIGILANCIA SANITARIA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (14,'TECNICO DE ENFERMAGEM','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (15,'AGENTE ADMINISTRATIVO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (16,'ASSISTENTE SOCIAL','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (17,'BIOQUIMICO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (18,'ENFERMEIRO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (19,'FARMACEUTICO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (20,'FISIOTERAPEUTA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (21,'NUTRICIONISTA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (22,'CIRURGIAO DENTISTA','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (23,'ADMINISTRADOR HOSPITALAR','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (24,'SECRETARIO DE SAUDE','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (25,'CHEFE DO DEPARTAMENTO DE APOIO A SAUDE','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (26,'COORDENADOR DE PROGRAMAS DA SAUDE','N'); 
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (27,'AUXILIAR ODONTOLOGICO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (28,'AUXILIAR TECNICO DE ENFERMAGEM','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (29,'ENFERMEIRO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (30,'MEDICO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (31,'ESTAGIARIO','N');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (32,'AGENTE COMUNITARIO DE SAUDE','S');
+INSERT INTO FUNCAO (ID_Funcao,NM_Funcao,SN_Agente_Comunitario) VALUES (33,'AUXILIAR DE SERVICOS GERAIS','N');
 
 
 -- //----------------------------------------------------------------------------------------------------------------------------------------------
@@ -1241,4 +1238,23 @@ INSERT INTO TIPO_OCORRENCIA (ID_Tipo_Ocorrencia,NM_Tipo_Ocorrencia,ID_Usuario_Ca
 -- //----------------------------------------------------------------------------------------------------------------------------------------------
 -- //----------------------------------------------------------------------------------------------------------------------------------------------
 
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (1,'AMBULATORIO DE DST AIDS');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (2,'AMBULATORIO DE SAUDE MENTAL DE TUPA');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (3,'AMBULATORIO MEDICO DE ESPECIALIDADE MUNICIPAL');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (4,'NUCLEO DE APOIO A SAUDE DA FAMILIA TUPA SP');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (5,'PAS DR EDMUNDO VIEIRA PRADO DE TUPA');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (6,'UNIDADE BASICA DE SAUDE DR FRANCISCO SPADARO JUNIOR ABARCA');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (7,'UNIDADE BASICA DE SAUDE DR WALTER PIMENTEL');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (8,'UNIDADE DE PRONTO ATENDIMENTO UPA TUPA');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (9,'UNIDADE DE VIGILANCIA DE ZOONOSES');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (10,'USF APARICIA DE BARROS STA ADELIA');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (11,'USF ARACY DE MARCHI NEGO ENFERMEIRO JARDIM RUBIACEA');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (12,'USF DE TUPA ALTO SUMARE');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (13,'USF DE TUPA DISTRITOS');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (14,'USF DR ANTONIO NUNES DE ABREU FILHO');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (15,'USF DR PEDRO TEOFILO NASSIF SETOR A');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (16,'USF JOSE ANTONIO TARIFA CECAP');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (17,'USF MARIA APARECIDA SANTOS MORCELLI CIDA MORCELLI MARABA');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (18,'USF MIRIAN ROSELY BENITO PIMENTEL MIROCA B');
+INSERT INTO UNIDADE_SAUDE (ID_Unidade_Saude,NM_Unidade_Saude) VALUES (19,'USF VILA INDEPENDENCIA');
 
