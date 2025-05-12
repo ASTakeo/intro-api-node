@@ -49,7 +49,7 @@ CREATE TABLE PARAMETRO (ID_Parametro             INTEGER      PRIMARY KEY
                        ,QT_Dias_Agenda_Retorno   SMALLINT     NOT NULL DEFAULT 7   -- // Qtde de dias para calculo da data do retorno 
                        );
                         
-INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('PARAMETRO','Parâmetros gerais do sistema');
+INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('PARAMETRO','Parâmetros Gerais do Sistema');
                    
 
 /*
@@ -111,7 +111,7 @@ CREATE TABLE RUA (ID_Rua           INTEGER       AUTO_INCREMENT PRIMARY KEY
                  ,ID_Localidade    INTEGER       NOT NULL
                  ,ID_Tipo_Rua      INTEGER       NOT NULL);
                  
-INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('RUA','Cadastro de Ruas da Localidade');
+INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('RUA','Cadastro de Ruas');
  
 /*
 CADASTRO DE FUNÇÃO: 
@@ -123,8 +123,9 @@ CADASTRO DE FUNÇÃO:
 */
 
 DROP TABLE IF EXISTS FUNCAO; 
-CREATE TABLE FUNCAO (ID_Funcao      INTEGER         AUTO_INCREMENT PRIMARY KEY
-                    ,NM_Funcao      VARCHAR(40)     NOT NULL);
+CREATE TABLE FUNCAO (ID_Funcao              INTEGER         AUTO_INCREMENT PRIMARY KEY
+                    ,NM_Funcao              VARCHAR(40)     NOT NULL
+                    ,SN_Agente_Comunitario  CHAR(1)         NOT NULL  DEFAULT 'N');
 
 INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('FUNCAO','Cadastro de Funções'); 
   
@@ -174,13 +175,13 @@ CADASTRO DO COLABORADOR/FUNCIONARIO
  
 */
 DROP TABLE IF EXISTS COLABORADOR; 
-CREATE TABLE COLABORADOR (ID_Colaborador       INTEGER         AUTO_INCREMENT PRIMARY KEY
-                         ,Matricula            VARCHAR(20)     NOT NULL
-                         ,SN_Temporario        CHAR(1)         NOT NULL   -- // Contratos temporários (S/N)  
-                         ,ID_Usuario_Cadastro  INTEGER         Not Null   -- // Usuário que realizou do cadastro
-                         ,DT_Cadastro          DATE            NOT NULL   -- //DEFAULT TIMESTAMP
-                         ,ID_Pessoa            INTEGER         NOT NULL
-                         ,ID_Funcao            INTEGER         NOT NULL);
+CREATE TABLE COLABORADOR (ID_Colaborador         INTEGER         AUTO_INCREMENT PRIMARY KEY
+                         ,Matricula              VARCHAR(20)     
+                         ,SN_Temporario          CHAR(1)         NOT NULL                  -- // Contratos temporários (S/N)  
+                         ,ID_Usuario_Cadastro    INTEGER         NOT NULL                  -- // Usuário que realizou do cadastro
+                         ,DT_Cadastro            DATE            NOT NULL                  -- // DEFAULT TIMESTAMP
+                         ,ID_Pessoa              INTEGER         NOT NULL   
+                         ,ID_Funcao              INTEGER         NOT NULL);   
                          
 INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('COLABORADOR','Cadastro de Colaboradores/Funcionários'); 
 
@@ -205,21 +206,22 @@ CREATE TABLE TIPO_OCORRENCIA (ID_Tipo_Ocorrencia      INTEGER            AUTO_IN
                              ,NM_Tipo_Ocorrencia      VARCHAR(50)        NOT NULL 
                              ,ID_Usuario_Cadastro     INTEGER            NOT NULL  
                              ,DT_Cadastro             DATE               NOT NULL 
-                             ,Icone                   VARCHAR(100)    -- // Selecionar um icone padrão, informando o caminho, será demonstrado no mapa  
+                             ,Icone                   VARCHAR(100)      -- // Selecionar um icone padrão, informando o caminho, será demonstrado no mapa  
                              ,Cor                     VARCHAR(100) );   -- // Definir uma cor padrão que será demonstrado no mapa (tabela de cores ?)
                              
 INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('TIPO_OCORRENCIA','Cadastro de Tipos de Ocorrências'); 
 
 
+/*
+Cadastro de Unidades de Saúde, utilizados no cadastro de Visitas
+https://cnes.datasus.gov.br/pages/estabelecimentos/consulta.jsp
+*/
 
--- // Cadastro de Unidades de Saúde do munícipio 
-,DS_PSF                 Varchar(30)             -- // PSF (Pronto Socorro da Família)
+DROP TABLE IF EXISTS UNIDADE_SAUDE;
+CREATE TABLE UNIDADE_SAUDE (ID_Unidade_Saude    INTEGER AUTO_INCREMENT PRIMARY KEY
+                           ,NM_Unidade_Saude    VARCHAR(60) NOT NULL);               -- // Campo PSF (Pronto Socorro da Família) - Visita
 
-https://cnes2.datasus.gov.br/Listar_Mantidas.asp?VCnpj=44573087000161&VEstado=35&VNome=PREFEITURA%20DA%20ESTANCIA%20TURISTICA%20DE%20TUPA
-
--- // Cadastro de Agentes Comunitários
-,NM_Agente_Comunitario  VARCHAR(20)             -- // Agente Comuntário 
-
+INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('UNIDADE_SAUDE','Cadastro de Unidades de Saúde'); 
 
 
 /*
@@ -240,17 +242,17 @@ No caso de visita no mesmo domicilio, recuperar o(s) historico(s) anterior(es) o
 */
 DROP TABLE IF EXISTS VISITA; 
 CREATE TABLE VISITA (ID_Visita              INTEGER      AUTO_INCREMENT PRIMARY KEY
-                    ,ID_Colaborador         INTEGER      NOT NULL   -- // Agente 
+                    ,ID_Colaborador_Agente  INTEGER      NOT NULL   -- // Agente Comunitário (Função de Agente - SN_Agente_Comunitario = S)
+                    ,ID_Usuario_Cadastro    INTEGER      NOT NULL   -- // Usuário que cadastrou a visita 
                     ,DT_Cadastro            DATE                    -- // DEFAULT TIMESTAMP
                     ,DT_Solicitacao         DATE                    -- // Data da solicitação visita
                     ,DT_Atendimento         Date                    -- // Data da realização da visita  
                     ,ID_Rua                 INTEGER      NOT NULL   -- // Endereço
                     ,NO_Imovel              VARCHAR(10)  NOT NULL
-                    -- ,NM_Morador             VARCHAR(50)  NOT NULL
                     ,NO_Telefone            VARCHAR(15)             
                     ,DS_Ponto_Referencia    VARCHAR(30)             -- // Ponto de referencia  
-                    ,DS_PSF                 Varchar(30)             -- // PSF (Pronto Socorro da Família)
-                    ,NM_Agente_Comunitario  VARCHAR(20)             -- // Agente Comuntário 
+                    ,ID_Unidade_Saude       INTEGER      NOT NULL   -- // Unidade de Saúde (PSF)    
+                    
                     ,ST_Imovel              CHAR(1)      NOT NULL   -- // (T)rabalhado
                                                                     -- // (F)echado
                                                                     -- // (D)esocupado
@@ -265,9 +267,6 @@ CREATE TABLE VISITA (ID_Visita              INTEGER      AUTO_INCREMENT PRIMARY 
                     ,DT_Retono              DATE                    -- // Data do retorno (trazer 1 semana por padrão, podendo ser alterado), será utilizado para mensagens de aviso    
                     ,ST_Status              CHAR(1));               -- // Situação da visita (A)ndamento - (E)ncerrado   
 
-  -- ,FOREIGN KEY (ID_Colaborador) REFERENCES COLABORADOR(ID_Colaborador)
-  -- ,FOREIGN KEY (ID_Rua) REFERENCES RUA(ID_Rua) );
-  
 INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('VISITA','Cadastro de Visitas de Imóveis');  
 
 
@@ -283,17 +282,14 @@ CREATE TABLE VISITA_ITEM (ID_Visita_Item        INTEGER      AUTO_INCREMENT PRIM
                          ,DT_Visita             DATETIME     NOT NULL     -- // Data da visita
                          ,QT_Amostra_Coletada   INTEGER                   -- // Qtde de insetos, larvas, etc        
                          ,DS_Ocorrencia         VARCHAR(255) NOT NULL     -- // Historico da visita, ações realizadas, informações relevantes do processo 
-                         ,NM_Morador            VARCHAR(50)  NOT NULL
-                         ,DT_Nascimento         Date         NOT NULL     -- // Será utilizado para calcular a idade e listar na tela (15 anos, 3 semanas )      
-
-
- -- ,FOREIGN KEY (ID_Visita) REFERENCES VISITA(ID_Visita)
- -- ,FOREIGN KEY (ID_Tipo_Ocorrencia) REFERENCES TIPO_OCORRENCIA(ID_Tipo_Ocorrencia) );
-
-  
+                         ,NM_Morador            VARCHAR(50)  NOT NULL     -- // Nome do morador na data da visita
+                         ,DT_Nascimento         DATE         NOT NULL     -- // Será utilizado para calcular a idade e listar na tela (15 anos, 3 semanas )      
+                         ,ID_Colaborador        INTEGER      NOT NULL);   -- // Agente da Visita (Pode ser diferente do agente da abertura da visita) 
+                         
 INSERT INTO TABELA (NM_Fisico,NM_Logico) VALUES ('VISITA_ITEM','Cadastro de Itens das Visitas de Imóveis');  
 
 
 
 -- // https://cnes2.datasus.gov.br/Lista_Es_Municipio.asp?VEstado=35&VCodMunicipio=355500&NomeEstado=
 
+-- // https://viacep.com.br/ws/sp/tupã/cherente/json/
