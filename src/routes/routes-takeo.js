@@ -3,7 +3,7 @@ const router = express.Router();
 
 // const UsuarioControler = require('../controllers/vistoria');
 const ParametroControler = require('../controllers/parametro');
-const TipoRuaControler = require('../controllers/tiporua');
+const TipoRuaControler = require('../controllers/tipo_rua');
 
 router.get('/parametro', ParametroControler.listarParametro);
 
