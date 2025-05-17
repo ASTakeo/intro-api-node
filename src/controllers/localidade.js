@@ -81,7 +81,7 @@ module.exports ={
                          WHERE ID_Localidade = ?;`;
 
             // Definição do valores do parâmetro
-            const values = [nm_localidade, uf_localidade,id_localidade];
+            const values = [nm_localidade,uf_localidade,id_localidade];
 
             // Executa o SQL
             const atualizaDados = await db.query(sql, values);
@@ -121,7 +121,7 @@ module.exports ={
 
             return response.status(200).json({
                 sucesso: true,
-                mensagem: `Localidade ${id_tipo_rua} excluído com sucesso!`,
+                mensagem: `Localidade ${id_localidade} excluído com sucesso!`,
                 dados: excluir[0].affectedRows
         });
 
